@@ -229,7 +229,7 @@ SELECT name, sale_date FROM Clients
 RIGHT JOIN Sales ON Clients.id = Sales.client_id
 GROUP BY 1
 ```
-![](IMG/RIGHTJOIN.png) 
+![](IMG/RIGHTJION.png) 
 
 
 
