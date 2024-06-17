@@ -173,7 +173,7 @@ SELECT item_id, row_number() over(ORDER BY amount) as rang
 FROM Sales
 GROUP By item_id
 ```
-![](IMG/RANK.png)  
+![](IMG/RANKrn.png)  
 
 
 ## 7.3.Функция смещения
