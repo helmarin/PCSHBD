@@ -1,18 +1,18 @@
 # 1. Гусейнова Сабина Гасановна ИС-22/9-1
 ## 2. Описание базы данных "PCSHOP"
 	База данных для хранения информации о клиентах и покупках магазина компьютерных комплектующих
-![]() 
+![](BD.png) 
 
 ### 2.1. Таблица "Co" /Компании
 
  - id  (INTEGER, PRIMARY KEY) - уникальный идентификатор 
  - co_name (varchar(30)) - название компании
 
-![]() 
+![](Co.png) 
 
  - Вывод данных из таблицы
 
-![]()
+![](COS.png)
 
 
 ### 2.2. Таблица "Clients" /Клиенты
@@ -23,22 +23,22 @@ id (INTEGER, PRIMARY KEY) - уникальный идентификатор по
  - gender (VARCHAR(3)) - пол
  - address (VARCHAR(30)) - адрес 
 
-![]()
+![](Clients.png)
 
  - Вывод данных из таблицы
 
-![]() 
+![](CLIENT.png) 
 
 ### 2.3. Таблица "Types" /Виды
 
  - id (INTEGER, PRIMARY KEY) - уникальный идентификатор видов
  - type (VARCHAR(30)) - название вида
 
-![]() 
+![](Types.png) 
 
  - Вывод данных из таблицы
 
-![]()
+![](TYPE.png)
 
 ### 2.4. Таблица "Items" /Комплектующая
 
@@ -49,12 +49,11 @@ id (INTEGER, PRIMARY KEY) - уникальный идентификатор по
 
 	Промежуточная таблица, для реализации связи многие к многим (между Co и Types)
 
-
-![]() 
+![](Items.png) 
 
  - Вывод данных из таблицы
 
-![]()
+![](ITEM.png)
 
 
 ### 2.5. Таблица "Sales" /Покупки
@@ -66,11 +65,11 @@ id (INTEGER, PRIMARY KEY) - уникальный идентификатор по
  - item_id (INT) - уникальный идентификатор комплектующей (связь с таблицей Items по полю id )
   
 	Связь с таблицами Clients и Items (один к многим)
-![]() 
+![](Sales.png) 
 
  - Вывод данных из таблицы
 
-![]()
+![](SALE.png)
 
 
 
@@ -84,8 +83,7 @@ UNION
 SELECT * FROM Co
 LIMIT 4
 ```
-![]()
-
+![](UNION.png)
 
 
 ## 4.ORDER BY
@@ -96,8 +94,7 @@ LIMIT 4
 SELECT type FROM Types 
 ORDER BY 1 ASC
 ```
-![]() 
-
+![](ORDER_BY.png) 
 
 
 ## 5.HAVING
@@ -109,7 +106,7 @@ SELECT price FROM Items
 GROUP BY co_id
 Having type_id = 3
 ```
-![]() 
+![](HAVING.png) 
 
 
 
@@ -128,7 +125,7 @@ FROM Items
 GROUP BY co_id
 LIMIT 1
 ```
-![]() 
+![](DOUBLESELECT.png) 
 
 
 ### 6.2. В WHERE
@@ -136,18 +133,17 @@ LIMIT 1
 Вывод имен покупателей Dell
 ```
 SELECT name FROM Clients
-WHERE id IN (
-			SELECT client_id FROM Sales
-  			WHERE item_id IN 
+WHERE id IN (SELECT client_id FROM Sales
+     		WHERE item_id IN 
   				( SELECT id FRom Items
-                  Where co_id IN 
-                   (SELECT id FROM Co
-                     WHERE co_name = 'Dell')
-                 )
-	        )
+				 WHERE co_id IN 
+                  		 	(SELECT id FROM Co
+                     			WHERE co_name = 'Dell')
+                 		)
+	 )
 GROUP BY 1
 ```
-![]() 
+![](SUBSELECTINWHERE.png) 
 
 
 ## 7.Оконные функции
@@ -166,7 +162,7 @@ SELECT
     FROM Items) AS Количество_Компаний
 FROM Items
 ```
-![]()
+![](AGRFUN.png)
 
 ### 7.2.Ранжирующая функция
 
@@ -177,7 +173,7 @@ SELECT item_id, row_number() over(ORDER BY amount) as rang
 FROM Sales
 GROUP By item_id
 ```
-![]()  
+![](RANK.png)  
 
 
 ## 7.3.Функция смещения
@@ -192,7 +188,7 @@ GROUP BY 1
 ORDER BY 1 ASC
 LIMIT 6 OFFSET 1
 ```
-![]() 
+![](SMF.png) 
 
 
 
@@ -208,7 +204,7 @@ JOIN Items ON Co.id = Items.co_id
 Where price < 200
 GROUP BY 1
 ```
-![]() 
+![](INNERJOIN.png) 
 
 
 
@@ -220,7 +216,7 @@ SELECT name, sale_date FROM Clients
 LEFT JOIN Sales ON Clients.id = Sales.client_id
 GROUP BY 1
 ```
-![]() 
+![](LEFTJOIN.png) 
 
 
 
@@ -233,7 +229,7 @@ SELECT name, sale_date FROM Clients
 RIGHT JOIN Sales ON Clients.id = Sales.client_id
 GROUP BY 1
 ```
-![]() 
+![](RIGHTJOIN.png) 
 
 
 
@@ -249,7 +245,7 @@ Full OUTER JOIn Types ON Types.id = Items.type_id
 WHERE amount IS NOT NULL
 GROUP BY name
 ```
-![]() 
+![](FULLOUTERJOIN.png) 
 
 
 
@@ -262,7 +258,7 @@ SELECT co_name, type FROM Co
 CROSS JOIN
 Types
 ```
-![]() 
+![](CROSSJOIN.png) 
 
 
 
@@ -278,7 +274,7 @@ SELECT price,
        END AS price_category
 FROM Items;
 ```
-![]() 
+![](CASE.png) 
 
 
 
@@ -293,4 +289,4 @@ WITH Cod AS
 	WHERE co_name LIKE 'S%')
 SELECT * FROM Cod
 ```
-![]() 
+![](WITH.png) 
