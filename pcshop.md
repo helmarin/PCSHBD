@@ -1,6 +1,8 @@
 # 1. Гусейнова Сабина Гасановна ИС-22/9-1
 ## 2. Описание базы данных "PCSHOP"
+
 База данных для хранения информации о клиентах, их покупках и товарах из магазина компьютерных комплектующих
+
 ![IMG](IMG/BD.png) 
 
 ### 2.1. Таблица "Co" /Компании
@@ -65,12 +67,12 @@
  - item_id (INT) - уникальный идентификатор комплектующей (связь с таблицей Items по полю id )
   
 	Связь с таблицами Clients и Items (один к многим)
+
 ![](IMG/Sales.png) 
 
  - Вывод данных из таблицы
 
 ![](IMG/SALE.png)
-
 
 
 ## 3.UNION
@@ -109,7 +111,6 @@ Having type_id = 3
 ![](IMG/HAVING.png) 
 
 
-
 ## 6. Демонстрация работы вложенных запросов
 
 ### 6.1. В SELECT
@@ -131,6 +132,7 @@ LIMIT 1
 ### 6.2. В WHERE
 
 Вывод имен покупателей Dell
+
 ```
 SELECT name FROM Clients
 WHERE id IN (SELECT client_id FROM Sales
@@ -164,6 +166,7 @@ FROM Items
 ```
 ![](IMG/AGRFUN.png)
 
+
 ### 7.2.Ранжирующая функция
 
 Проранжирование комплектующих, отсортированных по цене
@@ -191,7 +194,6 @@ LIMIT 6 OFFSET 1
 ![](IMG/SMF.png) 
 
 
-
 ## 8.JOIN
 
 ### 8.1.INNER JOIN
@@ -207,7 +209,6 @@ GROUP BY 1
 ![](IMG/INNERJOIN.png) 
 
 
-
 ### 8.2.LEFT JOIN
 Вывод имен клиентов и дат покупок
 
@@ -217,7 +218,6 @@ LEFT JOIN Sales ON Clients.id = Sales.client_id
 GROUP BY 1
 ```
 ![](IMG/LEFTJOIN.png) 
-
 
 
 ### 8.3.RIGHT JOIN
@@ -230,7 +230,6 @@ RIGHT JOIN Sales ON Clients.id = Sales.client_id
 GROUP BY 1
 ```
 ![](IMG/RIGHTJION.png) 
-
 
 
 ### 8.4.FULL OUTER JOIN
@@ -248,7 +247,6 @@ GROUP BY name
 ![](IMG/FULLOUTERJOIN.png) 
 
 
-
 ### 8.5.CROSS JOIN
 
 Вывод всех возможных сочетаний названий компаний и видов комплектующих
@@ -259,7 +257,6 @@ CROSS JOIN
 Types
 ```
 ![](IMG/CROSSJOIN.png) 
-
 
 
 ## 9.CASE
@@ -275,7 +272,6 @@ SELECT price,
 FROM Items;
 ```
 ![](IMG/CASE.png) 
-
 
 
 ## 10.WITH
