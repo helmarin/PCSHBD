@@ -162,7 +162,7 @@ SELECT
     FROM Items) AS Количество_Компаний
 FROM Items
 ```
-![](AGRFUN.png)
+![](IMG/AGRFUN.png)
 
 ### 7.2.Ранжирующая функция
 
